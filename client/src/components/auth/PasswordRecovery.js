@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import {withRouter, Link} from "react-router-dom";
+import Loader from '../Loader';
 
 
 const url = "http://localhost:4000/api";
@@ -12,7 +13,8 @@ class PasswordRecovery extends React.Component{
     this.state = {
       message: this.props.location.state?.message ,
       username: "",
-      email: ""
+      email: "",
+      callingAPI: false
     }
   }
 
@@ -25,6 +27,7 @@ class PasswordRecovery extends React.Component{
   handleSubmit = async (evt) =>{
     const {history} = this.props;
     try{
+      this.setState({callingAPI: true});
       evt.preventDefault();
       const response = await axios.post(`${url}/passwordRecovery`, {...this.state},{
         withCredentials: true
@@ -49,6 +52,8 @@ class PasswordRecovery extends React.Component{
       <div className='passwordRecovery d-flex flex-column align-items-center'>
         {this.state.message?(<div className='alert alert-primary style={{width: "100%", textAlign: "center"}}'>{this.state.message}</div>):""}
         <h2 className='mt-5'>Password recovery</h2>
+        {this.state.callingAPI?
+        <Loader />:<div></div>}
         <form action="passwordRecovery" className='form my-4 d-flex flex-column align-items-center row container-xxs' onSubmit={this.handleSubmit}>
           <div className='username my-1 col-md-12'>
             <label className='col-md-5' htmlFor="username">Username</label>

@@ -36,7 +36,8 @@ class ProblemGet extends React.Component{
           notes: "",
           language: "cpp",
           solution: "",
-          username: ""
+          username: "",
+          contestID: ""
         }
       }
     
@@ -105,6 +106,7 @@ class ProblemGet extends React.Component{
     return (
     <div>
                 {this.state.message?(<div className='alert alert-primary'>{JSON.stringify(this.state.message)}</div>):""}
+        <Link className='badge text-bg-light mt-4 mx-3 px-4' to={`/contest/${this.state.contestID}/announcement/get`}>contest</Link>
         <div className='about my-4 d-flex flex-column justify-content-center align-items-center'>
             <div className='fs-4 my-3 text'>{`${this.state.code}. ${this.state.name}`}</div>
             <div>time limit: {`${this.state.timeLimit} ms`}</div>

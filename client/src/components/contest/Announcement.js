@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import {withRouter, Link} from "react-router-dom";
+import CountdownTimer from '../CountdownTimer';
 
 
 function getTimeAgo(timestamp) {
@@ -121,6 +122,15 @@ class Announcement extends React.Component{
     // if (this.state.problems.length)
     // console.log(this.state);
     // console.log(this.state.problems[0]._id);
+    let timestmp = 0;
+    if (new Date(this.state.contest.startsAt).getTime()>Date.now()) timestmp = new Date(this.state.contest.startsAt).getTime()-Date.now();
+    else timestmp = new Date(this.state.contest.endsAt).getTime() - Date.now();
+    timestmp = Math.floor(timestmp/1000);
+    // console.log(Date.now());
+    // console.log(timestmp);
+    let hr = Math.floor(timestmp/3600);
+    let mn = Math.floor((timestmp%3600)/60);
+    let sc = timestmp%60;
     return (
       <div className='announcement'>
                 {this.state.message?(<div className='alert alert-primary'>{this.state.message}</div>):""}
@@ -128,11 +138,21 @@ class Announcement extends React.Component{
         {this.state.fetched?(
         <div className='m-2 bg-light'>
             <div className='border-bottom text text-dark d-flex justify-content-between p-3'>
+              <span className='d-flex flex-column align-items-start'>
                 <Link to={`/contest/${this.state.contest._id}/announcement/get`}>{`${this.state.contest.name} #${this.state.contest.number}`}</Link>
-                <span>{String(new Date(new Date(this.state.contest.startsAt).getTime() + (5.5 * 60 * 60 * 1000)))}
-                {new Date(this.state.contest.startsAt)>Date.now()?(<span onClick={this.register} className='ms-4 badge btn text-bg-light text-decoration-underline'>Register</span>):(<div></div>)}
-                {new Date(this.state.contest.startsAt)<Date.now()?(<Link to={`/contest/${this.state.contest._id}/standings`} className='ms-4 badge btn text-bg-light text-decoration-underline'>Standings</Link>):(<div></div>)}
-                <Link to={`/contest/${this.state.contest._id}/enter`} className='badge text-bg-light btn text-decoration-underline'>Enter</Link></span>
+                {new Date(this.state.contest.endsAt).getTime()<Date.now()
+                ?
+                <div></div>
+                :
+                <div className='badge text-bg-light'>
+                  <span>{new Date(this.state.contest.startsAt).getTime()<=Date.now()?"Ends in":"Starts in"} </span>
+                  {hr<24?(<CountdownTimer hours={hr} minutes={mn} seconds={sc} />):(<div>{Math.floor(hr/24)} days</div>)}
+                  </div>}
+                </span>
+                <span>{String(new Date(new Date(this.state.contest.startsAt).getTime() + (5.5 * 60 * 60 * 1000)))}<div>
+                {new Date(this.state.contest.startsAt)>Date.now()?(<span onClick={this.register} className='ms-4 badge btn text-bg-light text-decoration-underline'>Register</span>):(<span></span>)}
+                {new Date(this.state.contest.startsAt)<Date.now()?(<Link to={`/contest/${this.state.contest._id}/standings`} className='ms-4 badge btn text-bg-light text-decoration-underline'>Standings</Link>):(<span></span>)}
+                <Link to={`/contest/${this.state.contest._id}/enter`} className='badge text-bg-light btn text-decoration-underline'>Enter</Link></div></span>
             </div>
             <div className='border-bottom  p-3'>{this.state.contest.announcement}</div>
             <div className='border-bottom text text-dark d-flex justify-content-between p-3'>
