@@ -33,6 +33,8 @@ Recreated the functionality and design of the original codeforces, a competitive
 
 ### Profile
 
+![Screenshot from 2023-06-19 15-21-09](https://github.com/abhiseksr/codeforces-client/assets/85542595/6a245249-412a-4b5f-b435-bd3697eb5428)
+
 ![Screenshot from 2023-06-19 14-55-47](https://github.com/abhiseksr/codeforces-client/assets/85542595/0def7d99-f684-4d57-ad47-8c2e5e81691b)
 
 ![Screenshot from 2023-06-19 14-58-18](https://github.com/abhiseksr/codeforces-client/assets/85542595/30b402e3-6ba2-4730-afdd-5acec134243b)
