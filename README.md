@@ -70,6 +70,8 @@ Recreated the functionality and design of the original codeforces, a competitive
 
 ![Screenshot from 2023-06-19 18-17-01](https://github.com/abhiseksr/codeforces-client/assets/85542595/e9ce1966-7e5e-4e9c-a9ad-b4947b28d767)
 
+![Screenshot from 2023-06-19 15-13-13](https://github.com/abhiseksr/codeforces-client/assets/85542595/60032f5e-4dfd-4604-9bec-a2cbdf4f4866)
+
 ![Screenshot from 2023-06-19 18-35-16](https://github.com/abhiseksr/codeforces-client/assets/85542595/c9160a62-3064-4a13-94ce-afe12d83f8c8)
 
 ![Screenshot from 2023-06-19 18-34-08](https://github.com/abhiseksr/codeforces-client/assets/85542595/373e33c1-14d7-4c33-8602-e0546032a82d)
