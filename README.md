@@ -25,3 +25,23 @@ Recreated the functionality and design of the original codeforces, a competitive
 
 ## Snapshots
 
+### Login & Register
+
+![Screenshot from 2023-06-19 14-37-33](https://github.com/abhiseksr/codeforces-client/assets/85542595/aad93c30-edf5-4ee6-9567-956f4cb58a3a)
+
+![Screenshot from 2023-06-19 14-42-29](https://github.com/abhiseksr/codeforces-client/assets/85542595/6fab82d9-a54e-4db0-b836-828d4ceb932c)
+
+### Profile
+
+![Screenshot from 2023-06-19 14-55-47](https://github.com/abhiseksr/codeforces-client/assets/85542595/0def7d99-f684-4d57-ad47-8c2e5e81691b)
+
+![Screenshot from 2023-06-19 14-58-18](https://github.com/abhiseksr/codeforces-client/assets/85542595/30b402e3-6ba2-4730-afdd-5acec134243b)
+
+![Screenshot from 2023-06-19 15-03-20](https://github.com/abhiseksr/codeforces-client/assets/85542595/f4079a54-453d-499c-abb1-f27000025766)
+
+![Screenshot from 2023-06-19 15-08-46](https://github.com/abhiseksr/codeforces-client/assets/85542595/0bfa096f-afc4-451a-964e-041146a03a5b)
+
+
+
+
+
