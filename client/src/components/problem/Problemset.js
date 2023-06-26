@@ -39,7 +39,7 @@ class Problemset extends React.Component{
             withCredentials: true
         });
         // console.log("hello");
-        // console.log(response);
+        console.log(response);
         this.setState({problems: response.data.problems});
         }
     catch(err){

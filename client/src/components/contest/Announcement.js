@@ -131,6 +131,7 @@ class Announcement extends React.Component{
     let hr = Math.floor(timestmp/3600);
     let mn = Math.floor((timestmp%3600)/60);
     let sc = timestmp%60;
+    let commsize = this.state.contest.comments && this.state.contest.comments.length;
     return (
       <div className='announcement'>
                 {this.state.message?(<div className='alert alert-primary'>{this.state.message}</div>):""}
@@ -169,7 +170,9 @@ class Announcement extends React.Component{
         {this.state.fetched?(
         <table className='table'>
             <tbody>
-            {this.state.contest.comments.map((comment,idx)=>{
+            {this.state.contest.comments.map((comm,idx)=>{
+              idx = commsize-idx-1;
+              let comment = this.state.contest.comments[idx];
               return (
                 <tr className='row px-4'>
                   <td className='col-md-3'>

@@ -14,13 +14,26 @@ class Navbar extends React.Component{
           liveUser: "",
           search: "",
           unseenNotifications: 0,
+          list: []
         }
       }
 
-      handleChange = (evt)=>{
+      handleChange = async (evt)=>{
         this.setState({
           [evt.target.name] : evt.target.value
         })
+        if (evt.target.value.length<3) return;
+        const {history} = this.props;
+        try{
+          const response = await axios.get(`${url}/multisearch/${evt.target.value}`,{
+            withCredentials: true
+          });
+          console.log(response);
+          this.setState({list: response.data.list});
+        }
+        catch(err){
+          history.push('/login', {message: err.response.data});
+        }
         // console.log(this.state);
       }
 
@@ -48,20 +61,8 @@ class Navbar extends React.Component{
         }
       }
 
-      handleSubmit = async (evt) =>{
-        // console.log("handlesubmit");
-        const {history} = this.props;
-        try{
-          evt.preventDefault();
-          // console.log(this.state);
-          // document.cookie = `accessToken=${response.data.accessToken}`
-          const search = this.state.search;
-          this.setState({search: ""});
-          history.push(`/profile/${search}`);
-        }
-        catch(err){
-            history.push(`/profile/${this.state.liveUser}`);
-        }
+      handleSubmit = (evt) =>{
+        evt.preventDefault();
       }
     
       async componentDidMount(){
@@ -115,7 +116,22 @@ class Navbar extends React.Component{
             }
         </ul>
         <form class="d-flex" role="search" onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} class="form-control me-2" style={{width: "180px"}} value={this.state.search} name="search" type="search" placeholder="Search username" aria-label="Search"></input>
+          <input onChange={this.handleChange} class="form-control me-2" style={{width: "180px"}} value={this.state.search} name="search" type="search" placeholder="Search" aria-label="Search"></input>
+          {this.state.list.length?(<table className='table position-absolute top-100 end-10' style={{width: '30%', zIndex: "2"}}>
+          <thead>
+              <th>#</th>
+              <th>Type</th>
+              <th>Title</th>
+            </thead>
+            <tbody>
+          {this.state.list.map((x,idx)=>{
+            return (
+              <tr className='table px-2 py-1'>
+                <td>{idx+1}</td><td>{x.type}</td><td><Link to={x.type=='User'?`/profile/${x.title}`:(x.type=='Problem'?`/problem/${x.id}`:`/contest/${x.id}/enter`)}>{x.title}</Link></td>
+              </tr>
+            )
+          })}</tbody>
+        </table>):(<div></div>)}
         </form>
         <div className='mx-3'>
         <span onClick={this.handleTalks} type="button" to="/talks" class="btn btn-light position-relative">
