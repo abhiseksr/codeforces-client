@@ -62,7 +62,7 @@ class ProblemGet extends React.Component{
         const {history} = this.props;
         try{
           // console.log(this.state);
-          const response = await axios.post(`${url}/submission/${this.props.match.params.problemID}`, {language: 53, solution: this.state.solution}, {
+          const response = await axios.post(`${url}/submission/${this.props.match.params.problemID}`, {language: dictionary[this.state.language], solution: this.state.solution}, {
             withCredentials: true
           });
           // console.log(response);
@@ -91,7 +91,7 @@ class ProblemGet extends React.Component{
                 tempObj[key] = response.data.problem[key]; 
             }
             tempObj.solution = "";
-            tempObj.language = response.data.problem.solution.language;
+            tempObj.language = "cpp";
             tempObj.username = response.data.username;
             // console.log(tempObj);
             this.setState({...tempObj, callingAPI: false});
@@ -155,7 +155,7 @@ class ProblemGet extends React.Component{
             <div>
             <label htmlFor='language' className='mx-3' >Choose programming language</label>
             <select onChange={this.handleSelect} name="language" id="language">
-                <option selected value="cpp">C++ (GCC 8.3.0)</option>
+                <option value="cpp">C++ (GCC 8.3.0)</option>
                 <option  value="javascript">JavaScript (Node.js 18.15.0)</option>
                 <option  value="python">Python (3.11.2)</option>
                 <option  value="java">Java (JDK 17.0.6)</option>

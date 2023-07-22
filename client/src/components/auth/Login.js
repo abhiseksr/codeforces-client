@@ -16,9 +16,14 @@ class Login extends React.Component{
   }
 
   handleChange = (evt)=>{
-    this.setState({
-      [evt.target.name] : evt.target.value
-    })
+    try{
+      this.setState({
+        [evt.target.name] : evt.target.value
+      })
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 
   handleSubmit = async (evt) =>{
