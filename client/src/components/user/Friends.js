@@ -57,11 +57,11 @@ class Friends extends React.Component{
                   </tr>
                 )
               })}
-              <tr>
+              {/* <tr>
                   <td>1</td>
                   <td><a href="">tourist</a></td>
                   <td><i class="fa-solid fa-star" style={{color: "#e6df1e"}}></i></td>
-              </tr>
+              </tr> */}
             </tbody>
         </table>
       </div>

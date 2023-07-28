@@ -113,7 +113,7 @@ class Profile extends React.Component{
                   <div className='location fst-italic'>{this.state.name?this.state.name:"Undefined"}, {this.state.city?this.state.city:"Undefined"}, {this.state.country?this.state.country:"Undefined"}</div>
                   <div className='college fst-italic'>From {this.state.organisation?this.state.organisation:"Undefined"}</div>
                 </div>
-                <div onClick={this.addFriend} className='my-2 text-primary text-decoration-underline' type="button">Add to friend</div>
+                <span onClick={this.addFriend} className='my-2 text-primary text-decoration-underline' type="button">Add to friend</span>
                 <div className='friends my-1'>
                   <i class="fa-solid fa-star me-2" style={{color: "#e6df1e"}}></i>
                   <span>Friend of: {this.state.followers} users</span>
